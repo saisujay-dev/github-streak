@@ -13,13 +13,7 @@ set "BOT_SCRIPT=%BOT_DIR%\streak_bot.py"
 set "LOGFILE=%BOT_DIR%\runner.log"
 
 :: ── Timestamp ────────────────────────────────────────────────────────────
-for /f "tokens=2 delims==." %%I in ('wmic os get localdatetime /value 2^>nul') do set "dt=%%I"
-set "YYYY=%dt:~0,4%"
-set "MM=%dt:~4,2%"
-set "DD=%dt:~6,2%"
-set "HH=%dt:~8,2%"
-set "MIN=%dt:~10,2%"
-set "TIMESTAMP=%YYYY%-%MM%-%DD% %HH%:%MIN%"
+for /f "usebackq tokens=*" %%I in (`powershell -NoProfile -Command "Get-Date -Format 'yyyy-MM-dd HH:mm:ss'"`) do set "TIMESTAMP=%%I"
 
 echo. >> "%LOGFILE%"
 echo ================================================ >> "%LOGFILE%"
