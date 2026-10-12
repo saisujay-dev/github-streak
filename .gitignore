@@ -1,0 +1,5 @@
+.git/
+bot_run.log
+runner.log
+__pycache__/
+*.pyc
